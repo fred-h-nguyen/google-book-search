@@ -1,7 +1,7 @@
 import React from 'react';
 import Results from '../ResultsField/Results';
 import API from '../../utils/API';
-import { Segment, Grid, Button} from 'semantic-ui-react';
+import { Segment, Grid, Button } from 'semantic-ui-react';
 
 
 class Saved extends React.Component {
@@ -26,23 +26,25 @@ class Saved extends React.Component {
     };
 
     render() {
+        console.log(this.state.books)
         return (
-                <Segment>
-                    {this.state.books.map(book => <Results
-                        key={book._id}
-                        title={book.title}
-                        authors={book.authors.join(', ')}
-                        link={book.link}
-                        image={book.image}
-                        handleBookDelete={this.handleBookDelete}
-                    >
-                        <Grid.Column width='1'>
-                            <Button size='mini' color="red"
-                                onClick={()=>this.handleBookDelete(book._id)}
-                            > Remove</Button>
-                        </Grid.Column>
-                    </Results>)}
-                </Segment>
+            <Segment>
+                {this.state.books.map(book => (<Results
+                    key={book._id}
+                    title={book.title}
+                    authors={book.authors.join(', ')}
+                    link={book.link}
+                    image={book.image}
+                    description={book.description}
+                    handleBookDelete={this.handleBookDelete}
+                >
+                    <Grid.Column width='1'>
+                        <Button size='mini' color="red"
+                            onClick={() => this.handleBookDelete(book._id)}
+                        > Remove</Button>
+                    </Grid.Column>
+                </Results>))}
+            </Segment>
         )
     }
 }
