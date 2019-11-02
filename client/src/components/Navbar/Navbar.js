@@ -1,5 +1,6 @@
 import React from 'react';
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom'
 
 class Navbar extends React.Component {
 
@@ -7,7 +8,7 @@ class Navbar extends React.Component {
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
     style = {
         padding: '.25em',
-        marginBottom:'0px'
+        marginBottom: '0px'
     }
 
     render() {
@@ -15,24 +16,33 @@ class Navbar extends React.Component {
         return (
             <Segment inverted style={this.style}>
                 <Menu inverted pointing secondary compact>
-                    <Menu.Item
-                        name='Google Books'
-                        active={activeItem === 'Google Books'}
-                        onClick={this.handleItemClick}
-                        style={{fontSize:'.8em'}}
-                    />
-                    <Menu.Item
-                        name='Search'
-                        active={activeItem === 'Search'}
-                        onClick={this.handleItemClick}
-                        style={{fontSize:'.8em'}}
-                    />
-                    <Menu.Item
-                        name='Saved'
-                        active={activeItem === 'Saved'}
-                        onClick={this.handleItemClick}
-                        style={{fontSize:'.8em'}}
-                    />
+                    <Link
+                        to='/'>
+                        <Menu.Item
+                            name='Google Books'
+                            active={activeItem === 'Google Books'}
+                            onClick={this.handleItemClick}
+                            style={{ fontSize: '.8em' }}
+                        />
+                    </Link>
+                    <Link
+                        to='/'>
+                        <Menu.Item
+                            name='Search'
+                            active={activeItem === 'Search'}
+                            onClick={this.handleItemClick}
+                            style={{ fontSize: '.8em' }}
+                        />
+                    </Link>
+                    <Link
+                        to='/saved'>
+                        <Menu.Item
+                            name='Saved'
+                            active={activeItem === 'Saved'}
+                            onClick={this.handleItemClick}
+                            style={{ fontSize: '.8em' }}
+                        />
+                    </Link>
                 </Menu>
             </Segment>
         )
