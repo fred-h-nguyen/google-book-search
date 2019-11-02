@@ -1,7 +1,7 @@
 import React from 'react';
 import Results from '../ResultsField/Results';
 import API from '../../utils/API';
-import { Segment } from 'semantic-ui-react';
+import { Segment, Grid, Button} from 'semantic-ui-react';
 
 
 class Saved extends React.Component {

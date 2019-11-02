@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Form, Header, Button } from 'semantic-ui-react'
+import { Segment, Form, Header, Button, Grid} from 'semantic-ui-react'
 import Results from '../ResultsField/Results'
 import API from '../../utils/API'
 
