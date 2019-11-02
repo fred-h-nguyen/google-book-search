@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Form, Header, Button, Grid} from 'semantic-ui-react'
+import { Segment, Form, Header, Button, Grid } from 'semantic-ui-react'
 import Results from '../ResultsField/Results'
 import API from '../../utils/API'
 
@@ -7,7 +7,7 @@ class SearchForm extends React.Component {
 
     state = {
         query: '',
-        googleBooks: []
+        books: []
     }
 
     handleInput = (event) => {
@@ -71,9 +71,9 @@ class SearchForm extends React.Component {
                     </Form>
                 </Segment>
                 <Segment>
-                    {this.state.googleBooks.map(book => (
+                    {this.state.books.map(book => (
                         <Results
-                            key={googleBooks.id}
+                            key={book.id}
                             title={book.volumeInfo.title}
                             authors={book.volumeInfo.authors.join(', ')}
                             link={book.volumeInfo.infoLink}
@@ -82,7 +82,7 @@ class SearchForm extends React.Component {
                         >
                             <Grid.Column width='1'>
                                 <Button size='mini'
-                                    onClick={this.handleBookSave(book.id)}>Save</Button>
+                                    onClick={() => this.handleBookSave(book.id)}>Save</Button>
                             </Grid.Column>
                         </Results>))}
                 </Segment>
