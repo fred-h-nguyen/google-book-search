@@ -6,7 +6,7 @@ const Title = () => (
     <Segment style={{
         margin:'0',
         background:'url("./images/Library.jpeg")no-repeat center',
-        backgroundSize:'cover',
+        backgroundSize:'cover'
         }}>
         <Header textAlign='center' as='h1' style={{backgroundColor:'rgba(255,255,255,0.2'}}>
             (React) Google Books Search
