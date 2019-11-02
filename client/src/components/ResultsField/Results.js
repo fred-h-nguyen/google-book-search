@@ -6,7 +6,7 @@ const Results = props => {
         <Segment>
             <Grid>
                 <Grid.Row>
-                    <Grid.Column width="14">
+                    <Grid.Column width="13">
                         <Header>
                             {props.title}
                             <Header.Subheader>
@@ -15,7 +15,7 @@ const Results = props => {
                         </Header>
                     </Grid.Column>
                     <Grid.Column width='1'>
-                        <Button size='mini' as='a' href={props.link} target='_blank'>View</Button>
+                        <Button size='mini' color='black' as='a' href={props.link} target='_blank'>View</Button>
                     </Grid.Column>
                     {props.children}
                 </Grid.Row>

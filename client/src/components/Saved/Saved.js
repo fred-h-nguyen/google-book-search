@@ -37,7 +37,7 @@ class Saved extends React.Component {
                         handleBookDelete={this.handleBookDelete}
                     >
                         <Grid.Column width='1'>
-                            <Button size='mini'
+                            <Button size='mini' color="red"
                                 onClick={()=>this.handleBookDelete(book._id)}
                             > Remove</Button>
                         </Grid.Column>

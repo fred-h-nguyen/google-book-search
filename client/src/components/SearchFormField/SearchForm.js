@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Form, Header, Button, Grid } from 'semantic-ui-react'
+import { Segment, Form, Header, Button, Grid} from 'semantic-ui-react'
 import Results from '../ResultsField/Results'
 import API from '../../utils/API'
 
@@ -66,7 +66,7 @@ class SearchForm extends React.Component {
                             display: 'flex',
                             justifyContent: 'flex-end'
                         }}>
-                            <Button type='submit' size='mini'>Search</Button>
+                            <Button type='submit' size='mini' color="green">Search</Button>
                         </div>
                     </Form>
                 </Segment>
@@ -81,8 +81,8 @@ class SearchForm extends React.Component {
                             image={book.volumeInfo.imageLinks.thumbnail}
                         >
                             <Grid.Column width='1'>
-                                <Button size='mini'
-                                    onClick={() => this.handleBookSave(book.id)}>Save</Button>
+                                <Button size='mini' color='blue'
+                                    onClick={()=>this.handleBookSave(book.id)}>Save</Button>
                             </Grid.Column>
                         </Results>))}
                 </Segment>
