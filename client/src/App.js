@@ -14,7 +14,7 @@ class App extends React.Component {
         <Title />
         <Switch>
           <Route exact path = '/' component={SearchForm}/>
-          <Route exact path = '/' component={Saved}/>
+          <Route exact path = '/saved' component={Saved}/>
           <Route component={NoMatch}/>
         </Switch>
       </Router>
