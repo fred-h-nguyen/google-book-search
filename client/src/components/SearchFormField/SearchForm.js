@@ -1,7 +1,10 @@
 import React from 'react'
-import { Segment, Form, Header, Button, Grid} from 'semantic-ui-react'
+import { Segment, Form, Header, Button, Grid } from 'semantic-ui-react'
 import Results from '../ResultsField/Results'
 import API from '../../utils/API'
+import openSocket from 'socket.io-client';
+
+const socket = openSocket('http://localhost:8000');
 
 class SearchForm extends React.Component {
 
@@ -48,7 +51,17 @@ class SearchForm extends React.Component {
             .then(() => { this.getBooks() });
     };
 
+    sendSocketIO(data) {
+        socket.emit('book_added', data);
+    };
+
+
+
     render() {
+        // socket.on('added', function (data) {
+        //     alert(data)
+        // }) somehow use alert got data to server
+        this.sendSocketIO = this.sendSocketIO.bind(this);
         return (
             <>
                 <Segment style={{ padding: '5px' }}>
@@ -82,11 +95,14 @@ class SearchForm extends React.Component {
                         >
                             <Grid.Column width='1'>
                                 <Button size='mini' color='blue'
-                                    onClick={()=>this.handleBookSave(book.id)}>Save</Button>
+                                    onClick={() => {
+                                        this.handleBookSave(book.id)
+                                        this.sendSocketIO(book.volumeInfo.title)
+                                    }}>Save</Button>
                             </Grid.Column>
                         </Results>))}
                 </Segment>
-            </>
+           </>
         )
     }
 }

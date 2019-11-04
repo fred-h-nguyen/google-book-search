@@ -18,7 +18,22 @@ app.use(routes);
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
 
+//Socket
+
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+io.on('connection', function (socket) {
+  console.log('a user connected');
+  socket.on('disconnect', function () {
+    console.log('User Disconnected');
+  });
+  socket.on('books_added', function (data) {
+    socket.emit('added',`Someone as added ${data} to the library.`)
+  });
+});
+io.listen(8000);
+
 // Start the API server
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
