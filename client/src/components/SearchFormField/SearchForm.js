@@ -10,7 +10,8 @@ class SearchForm extends React.Component {
 
     state = {
         query: '',
-        books: []
+        books: [],
+        message: ''
     }
 
     handleInput = (event) => {
@@ -51,21 +52,34 @@ class SearchForm extends React.Component {
             .then(() => { this.getBooks() });
     };
 
-    sendSocketIO(data) {
+    sendSocketIO = (data) => {
         socket.emit('book_added', data);
     };
 
-    socketListener() {
-        socket.on('book_added',function(data){
-            alert(data)
+    // socketListener() {
+    //     socket.on('book_added', function (data) {
+    //         // this.setState({message:data})
+    //         alert(data)
+    //     })
+    // }
+
+    componentDidMount() {
+        // const socket = openSocket('http://localhost:8000');
+        socket.on('book_added', (data) => {
+            this.setState({ message: data })
         })
     }
 
-    
+    componentDidUpdate(prevProps,prevState){
+        if (this.state.message !== prevState.message){
+            alert(this.state.message);
+        }
+    }
 
     render() {
-        this.sendSocketIO = this.sendSocketIO.bind(this);
-        this.socketListener();
+        // this.sendSocketIO = this.sendSocketIO.bind(this);
+        // this.socketListener();
+        console.log(this.state.message)
         return (
             <>
                 <Segment style={{ padding: '5px' }}>
@@ -106,7 +120,7 @@ class SearchForm extends React.Component {
                             </Grid.Column>
                         </Results>))}
                 </Segment>
-           </>
+            </>
         )
     }
 }
