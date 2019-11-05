@@ -55,13 +55,17 @@ class SearchForm extends React.Component {
         socket.emit('book_added', data);
     };
 
+    socketListener() {
+        socket.on('book_added',function(data){
+            alert(data)
+        })
+    }
 
+    
 
     render() {
-        // socket.on('added', function (data) {
-        //     alert(data)
-        // }) somehow use alert got data to server
         this.sendSocketIO = this.sendSocketIO.bind(this);
+        this.socketListener();
         return (
             <>
                 <Segment style={{ padding: '5px' }}>

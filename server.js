@@ -27,8 +27,9 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function () {
     console.log('User Disconnected');
   });
-  socket.on('books_added', function (data) {
-    socket.emit('added',`Someone as added ${data} to the library.`)
+  socket.on('book_added', function (data) {
+    console.log(data)
+    socket.broadcast.emit('book_added',`Someone as added ${data} to the library.`)
   });
 });
 io.listen(8000);
