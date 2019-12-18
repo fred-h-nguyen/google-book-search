@@ -32,6 +32,10 @@
 * mongoose
 * React
 
+## Deployed
+
+<a href="https://gbooksearchreact.herokuapp.com/">Check it out!</a>
+
 ## Roadmap
 
 See the [open issues](https://github.com/fred-h-nguyen/google-book-search/issues) for a list of proposed features (and known issues).
